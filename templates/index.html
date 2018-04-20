@@ -1,0 +1,166 @@
+$def with(status)
+<!DOCTYPE html>
+<style>
+.font{font-family:Microsoft JhengHei,sans-serif;font-size:16px;height:100%;}
+
+.title{
+   display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:150px;
+}
+
+.bottom{
+  display:flex;
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:30px;
+}
+.abox{
+   display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:330px;
+}
+.box {
+    width: 100%;
+    height: 500px;
+    position: relative;  
+}
+.box2 {
+    background-color: #FFF;
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+
+}
+.center-box2 {
+    color:white;
+	font-size:20px;
+}
+.center-box1 {
+	font-size:50px;
+    color:white;
+    font-weight:500;
+}
+.parent{
+  display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:100%;
+}
+
+.login-in{
+	width:200px;
+    margin:0 auto;   
+}
+.bg{
+	background-color:#Edd0BE;
+	height:400px;
+	padding:20px;
+
+}
+
+.wen{
+  display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:150px;
+  font:40px;
+}
+
+</style>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>学生数据分析平台</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #E03636">
+<div class="all font">
+	<div class="title">
+		<h2 class="center-box1">欢迎登录学生数据分析平台</h2>
+	</div>
+	<div class="bg col-md-12 column" >
+		<div class="row" >
+				<div class="col-md-2 box">
+					<div class="thumbnail center-box1" style="border:5px solid #E03636;border-style: double;">
+						<img alt="300x200" src="https://image.flaticon.com/icons/svg/189/189098.svg" height="200" width="200"/>
+						<div class="caption">
+						    <div class="wen">
+								<h2>成绩与获奖</h2></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 box">
+					<div class="thumbnail center-box1" style="border:5px solid #E03636;border-style: double;">
+						<img alt="300x200" src="https://image.flaticon.com/icons/svg/189/189093.svg" height="180"/>
+						<div class="caption">
+						    <div class="wen">
+								<h2>消费分析</h2></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 box">
+					<div class="thumbnail center-box1" style="border:5px solid #E03636;border-style: double;">
+						<img alt="300x200" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/790ea928646375.55cae60e42ef9.jpg" height="190"/>
+						
+						<div class="caption">
+						    <div class="wen">
+								<h2>德育分析</h2></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 box">
+					<div class="thumbnail center-box1" style="border:5px solid #E03636;border-style: double;">
+						<img alt="300x200" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/e76b3f8100503.560b74231f4ac.jpg" height="180"/>
+						<div class="caption">
+						    <div class="wen">
+								<h2>社团活动</h2></div>
+						</div>
+						</div>
+					</div>
+				
+				
+					
+	
+	<div class="col-md-3 column">
+	<div class="abox">
+	<div class="box2">
+		<div>
+		    <div class="parent"><img alt="140x140" src="https://image.flaticon.com/icons/svg/167/167718.svg" width="130"/>
+			</div>
+			<div class="login-in">
+				<form role="form" method="post">
+					<div class="form-group">
+						 <input type="text" name="userid" class="form-control" id="userid" placeholder="用户名" size="16"/>
+					</div>
+					<div class="form-group">
+						 <input type="password" name="password" class="form-control" name="password" placeholder="密码" size="16"/>
+					</div>
+					<div class="parent"><button type="submit" class="btn btn-default">登录</button></div>
+				</form>
+		    </div>
+		</div>
+	</div>
+	</div>
+		<div class="bottom">
+			<div class="center-box2"><h5>copyright @eeevyi</h5></div>
+		</div>
+
+</div>
+</div>
+</div>
+</div>
+<script>
+$('.carousel').carousel({
+ interval: 2500
+})
+</script>
+</body>

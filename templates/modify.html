@@ -1,0 +1,113 @@
+$def with(username,status)
+<!DOCTYPE html>
+<style>
+html, body {width:100%;height:100%;} 
+
+.font{font-family:Microsoft JhengHei,sans-serif;font-size:16px;}
+.abox{
+   display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:400px;
+}
+.box {
+    background-color: #FFF;
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+
+}
+.login-in{
+	width:200px;
+    margin:80px auto; 
+
+}
+
+.parent{
+  display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:50px;
+}
+</style>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>学生数据分析平台</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+	.navbar .nav > li > a {
+    color: #fff;
+	font-size:18px;
+}
+
+.navbar .nav > li > a:hover{
+    color: #Edd0BE;
+	font-size:18px;
+}
+
+
+.navbar {
+  position: relative;
+  min-height: 40px;
+  margin-bottom: 15px;
+  border-radius: 0px;
+  background-color:#E03636;  //此处是我修改的地方
+  background-image: url("../App_Themes/header.jpg");
+  border: 5px solid transparent;
+
+}
+
+</style>
+
+</head>
+<body  style="background-color: #Edd0BE">
+	<nav class="navbar navbar-default font" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        
+    </div>
+    <div>
+
+
+        <ul class="nav navbar-nav font">
+		  <li><a class="navbar-brand font" href="/main">学生数据分析平台</a></li>
+            <li ><a href="#">$username</a></li>
+		</ul>
+				
+             </li>
+			</ul>
+		<ul class="nav navbar-nav navbar-right font"> 
+            <li  class="ele"><a href="/modify"><span class="glyphicon glyphicon glyphicon-pencil"></span>修改密码</a></li> 
+            <li><a href="/"><span class="glyphicon glyphicon-log-out"></span>登出</a></li> 
+        </ul> 
+    </div>
+    </div>
+</nav>
+<div class="abox">
+	<div class="box">
+
+	    <div class="login-in">
+		<form role="form" method="post">
+					<div class="form-group">
+						 <input type="password" name="newpw1" class="form-control" id="newpw1" placeholder="新密码" size="16"/>
+					</div>
+					<div class="form-group">
+						 <input type="password" name="newpw2" class="form-control" id="newpw2" placeholder="确认新密码" size="16"/>
+					</div>
+					<div class="parent" ><button type="submit" class="btn btn-default">修改</button></div>
+				</form>
+		  <h5>
+			$status
+		  </h5>
+		</form>
+		</div>
+		
+	</div>
+</div>
+
+</body>
