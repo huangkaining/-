@@ -1,0 +1,8 @@
+$def with(toUser,fromUser,createTime,content)
+<xml>
+    <ToUserName><![CDATA[$toUser]]></ToUserName>
+    <FromUserName><![CDATA[$fromUser]]></FromUserName>
+    <CreateTime>$creatTime</CreateTime>
+    <MsgType><![CDATA[text]]></MsgType>
+    <PicUrl><![CDATA[$content]]></PicUrl>
+</xml>

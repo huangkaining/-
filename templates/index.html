@@ -1,0 +1,153 @@
+$def with(status)
+<!DOCTYPE html>
+<style>
+.font{font-family:Microsoft JhengHei,sans-serif;font-size:16px;}
+
+.title{
+   display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:150px;
+}
+
+.bottom{
+  display:flex;
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:30px;
+}
+.abox{
+   display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:330px;
+}
+.box {
+    background-color: #FFF;
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+
+}
+.center-box2 {
+    color:white;
+	font-size:20px;
+}
+.center-box1 {
+	font-size:40px;
+    color:white;
+    font-weight:800;
+}
+.parent{
+  display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:100%;
+}
+
+.login-in{
+	width:200px;
+    margin:0 auto;   
+}
+.bg{
+	background-color:#Edd0BE;
+	height:400px;
+	padding:20px;
+
+}
+</style>
+
+<script>
+var status = "$status";
+if (status!=="")
+{
+	alert("用户名或密码错误");
+}
+
+
+</script>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>学生数据分析平台</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: #E03636">
+<div class="all font">
+	<div class="title">
+		<h2 class="center-box1">欢迎登录学生数据分析平台</h2>
+	</div>
+	<div class="bg" >
+		<div class="col-md-1 column">
+		</div>
+		<div class="col-md-6 column">
+			<div id="myCarousel" class="carousel slide">
+			<!-- 轮播（Carousel）指标 -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+			</ol>   
+			<!-- 轮播（Carousel）项目 -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="/static/pic1.jpg" style="height:350px; width:100%;" alt="First slide">
+				</div>
+				<div class="item">
+					<img src="/static/pic2.jpg" style="height:350px; width:100%;" alt="Second slide">
+				</div>
+				<div class="item">
+					<img src="/static/pic3.jpg"  style="height:350px; width:100%;" alt="Third slide">
+				</div>
+				<div class="item">
+					<img src="/static/pic4.jpg"  style="height:350px; width:100%;" alt="Third slide">
+				</div>
+			</div>
+			<!-- 轮播（Carousel）导航 -->
+			<a class="carousel-control left" href="#myCarousel" 
+				data-slide="prev">&lsaquo;
+			</a>
+			<a class="carousel-control right" href="#myCarousel" 
+				data-slide="next">&rsaquo;
+			</a>
+		   </div>
+	</div>
+	<div class="col-md-3 column">
+	<div class="abox">
+	<div class="box">
+		<div>
+		    <div class="parent"><img alt="140x140" src="https://image.flaticon.com/icons/svg/167/167718.svg" width="130"/>
+			</div>
+			<div class="login-in">
+				<form role="form" method="post">
+					<div class="form-group">
+						 <input type="text" name="userid" class="form-control" id="userid" placeholder="用户名" size="16"/>
+					</div>
+					<div class="form-group">
+						 <input type="password" name="password" class="form-control" name="password" placeholder="密码" size="16"/>
+					</div>
+					<div class="parent"><button type="submit" class="btn btn-default">登录</button></div>
+				</form>
+		    </div>
+		</div>
+	</div>
+	</div>
+		<div class="bottom">
+			<div class="center-box2"><h5>copyright @eeevyi</h5></div>
+		</div>
+
+</div>
+</div>
+</div>
+<script>
+$('.carousel').carousel({
+ interval: 2500
+})
+</script>
+</body>

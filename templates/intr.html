@@ -1,0 +1,231 @@
+$def with(username)
+<!DOCTYPE html>
+<style>
+html, body {width:100%;height:100%;} 
+
+.font{font-family:Microsoft JhengHei,sans-serif;font-size:16px;}
+.daohang{
+	width:100%;
+	margin:0 auto;
+}
+.title{
+    width: 100%;
+    height: 0px;
+    position: relative;  
+}
+
+.box {
+    width: 100%;
+    height: 500px;
+    position: relative;  
+}
+.center-box1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -220px;
+    margin-left: -100px;
+    width: 210px;
+    height: 450px;
+}
+.center-box2 {
+    position: absolute;
+    top: 50%;
+    margin-top: 50px;
+    width: 800px;
+    height: 10px;
+}
+.parent{
+  display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:180px;
+}
+.wen{
+  display:flex;
+  align-items: center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+  width:100%;
+  height:80px;
+}
+
+</style>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>学生数据分析平台</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+	.navbar .nav > li > a {
+    color: #fff;
+	font-size:18px;
+}
+
+.navbar .nav > li > a:hover{
+    color: #Edd0BE;
+	font-size:18px;
+}
+
+
+.navbar {
+  position: relative;
+  min-height: 40px;
+  margin-bottom: 15px;
+  border-radius: 0px;
+  background-color:#E03636;  //此处是我修改的地方
+  background-image: url("../App_Themes/header.jpg");
+  border: 5px solid transparent;
+
+}
+.btn{
+	-moz-box-shadow:inset 0px 1px 0px 0px #edd0be;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #edd0be;
+	box-shadow:inset 0px 1px 0px 0px #edd0be;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e03636), color-stop(1, #e4685d));
+	background:-moz-linear-gradient(top, #e03636 5%, #e4685d 100%);
+	background:-webkit-linear-gradient(top, #e03636 5%, #e4685d 100%);
+	background:-o-linear-gradient(top, #e03636 5%, #e4685d 100%);
+	background:-ms-linear-gradient(top, #e03636 5%, #e4685d 100%);
+	background:linear-gradient(to bottom, #e03636 5%, #e4685d 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e03636', endColorstr='#e4685d',GradientType=0);
+	background-color:#e03636;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #d83526;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	padding:7px 19px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e03636;
+}
+.btn:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e4685d), color-stop(1, #e03636));
+	background:-moz-linear-gradient(top, #e4685d 5%, #e03636 100%);
+	background:-webkit-linear-gradient(top, #e4685d 5%, #e03636 100%);
+	background:-o-linear-gradient(top, #e4685d 5%, #e03636 100%);
+	background:-ms-linear-gradient(top, #e4685d 5%, #e03636 100%);
+	background:linear-gradient(to bottom, #e4685d 5%, #e03636 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e4685d', endColorstr='#e03636',GradientType=0);
+	background-color:#e4685d;
+	border:1px solid #d83526;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+	border:1px solid #d83526;
+}
+
+
+
+</style>
+
+</head>
+<body>
+	<nav class="navbar navbar-default font" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        
+    </div>
+    <div>
+
+
+        <ul class="nav navbar-nav font">
+		  <li><a class="navbar-brand font" href="#">学生数据分析平台</a></li>
+            <li ><a href="#">$username</a></li>
+		</ul>
+				
+             </li>
+			</ul>
+		<ul class="nav navbar-nav navbar-right font"> 
+            <li  class="ele"><a href="/modify"><span class="glyphicon glyphicon glyphicon-pencil"></span>修改密码</a></li> 
+            <li><a href="/"><span class="glyphicon glyphicon-log-out"></span>登出</a></li> 
+        </ul> 
+    </div>
+    </div>
+</nav>
+<div class="container font">
+	<div class="row clearfix">
+	<div class="col-md-12 column">
+			<div class="row" >
+				<div class="col-md-3 box">
+					<div class="thumbnail center-box1">
+						<img alt="300x200" src="https://image.flaticon.com/icons/svg/189/189098.svg" height="200" width="200"/>
+						<div class="caption">
+						    <div class="wen">
+								<h1>成绩与获奖</h1></div>
+							<div class="parent">
+								 <a class="btn btn-primary" href="#">进入</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 box">
+					<div class="thumbnail center-box1">
+						<img alt="300x200" src="https://image.flaticon.com/icons/svg/189/189093.svg" height="180"/>
+						<div class="caption">
+						    <div class="wen">
+								<h1>消费分析</h1></div>
+							<div class="parent">
+								 <a class="btn btn-primary" href="#">进入</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 box">
+					<div class="thumbnail center-box1">
+						<img alt="300x200" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/790ea928646375.55cae60e42ef9.jpg" height="190"/>
+						
+						<div class="caption">
+						    <div class="wen">
+								<h1>德育分析</h1></div>
+							<div class="parent">
+								 <a class="btn btn-primary" href="#">进入</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 box">
+					<div class="thumbnail center-box1">
+						<img alt="300x200" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/e76b3f8100503.560b74231f4ac.jpg" height="180"/>
+						<div class="caption">
+						    <div class="wen">
+								<h1>社团活动</h1></div>
+							<div class="parent">
+								 <a class="btn btn-primary" href="/clubone">进入</a>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		
+	</div>
+</div>
+<script type="text/javascript">
+window.onload = function() {
+    var friend = document.getElementById("btn");
+    // 触摸
+    friend.ontouchstart = function() {
+        // 背景变绿
+        this.style.backgroundColor = "green";
+    };
+    // 停止触摸
+    friend.ontouchend = function() {
+        // 还原白色
+        this.style.backgroundColor = "white";
+    };
+};
+</script>
+</body>

@@ -1,0 +1,245 @@
+$def with(username,userau,datastr1,datastr2)
+<html>
+<head>
+<meta charset="utf-8">
+<title>学生数据分析平台</title>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/202/4e4ejrix/jquery.min.js"></script>
+	<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/202/4e4ejrix/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://sandbox.runjs.cn/uploads/rs/202/4e4ejrix/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_587114_c1zqpia42s6k1emi.css">
+    <link  rel="stylesheet" type="text/css" href="/static/css.css">
+<style>
+body{font:14px "微软雅黑","宋体","Arial Narrow",HELVETICA;-webkit-text-size-adjust:100%;}
+</style>
+</head>
+<script type="text/javascript">
+
+    </script>
+<body style="background-color: #fff">
+<script>
+window.onload=function(){
+	function createtable(){
+             var tabledata = $:datastr1;
+            var headdata = $:datastr2;
+            var div1=document.getElementById("resulttable");
+
+
+            var tb="<table class=\"table table-striped\">";
+            tb+="<tr>";
+            for (var i in headdata){
+                var obj = headdata[i];
+                for (var j in obj){
+                    tb+="<th>"+obj[j]+"</th>";
+                }
+            }
+            tb+="</tr>";
+            for (var j in tabledata){
+                var obj = tabledata[j];
+                tb+="<tr>";
+                tb+="<td>"+obj.userid+"</td>";
+				tb+="<td>"+obj.prize_name+"</td>";
+				tb+="<td>"+obj.prize_level+"</td>";
+                tb+="</tr>";
+            }
+            tb+="</table>";
+            div1.innerHTML=tb;
+        }
+
+        function createchoice(){
+            var div1=document.getElementById("div1");
+            var div2=document.getElementById("div2");
+            var div3=document.getElementById("div3");
+            var div4=document.getElementById("div4");
+            var ch1="";
+            var ch2="";
+            var ch3="";
+            var ch4="";
+            if ($:userau == 1){
+                ch1+="<li><a href=\"/scorestu\"><span>个人数据</span></a></li>";
+				ch1+="<li><a href=\"/prizedeclare\"><span>获奖信息申报</span></a></li>";
+                ch2+="<li><a href=\"/consumptionstu\"><span>个人消费分析</span></a></li>";
+                ch3+="<li><a href=\"/cleanone\"><span>个人宿舍得分</span></a></li>";
+                ch3+="<li><a href=\"/studyone\"><span>个人集体自习</span></a></li>";
+				ch4+="<li><a href=\"/clubone\"><span>社团签到统计</span></a></li>";
+            }
+            else if ($:userau == 2){
+               ch1+="<li><a href=\"/inclass\"><span>班内数据分析</span></a></li>";
+               ch2+="<li><a href=\"/classconsumption\"><span>班内消费分析</span></a></li>";
+               ch3+="<li><a href=\"/cleanclass\"><span>班内卫生对比</span></a></li>";
+               ch3+="<li><a href=\"/studyclass\"><span>班内集体自习</span></a></li>";
+             }
+            else if ($:userau == 3){
+                ch1+="<li><a href=\"/ingrade\"><span>班间数据分析</span></a></li>";
+                ch1+="<li><a href=\"/fileimport\"><span>信息导入</span></a></li>";
+                ch2+="<li><a href=\"/mealconsumption\"><span>用餐人数走向</span></a></li>";
+                ch2+="<li><a href=\"/mealoccupy\"><span>用餐率分析</span></a></li>";
+                ch3+="<li><a href=\"/cleanall\"><span>班间卫生对比</span></a></li>";
+                ch4+="<li><a href=\"/clubenergy\"><span>社团活力分析</span></a></li>";
+                ch4+="<li><a href=\"/clubuser\"><span>社团签到人数</span></a></li>";
+                ch4+="<li><a href=\"/clubnum\"><span>社团签到次数</span></a></li>";
+                ch2+="<li><a href=\"/poorstudent\"><span>贫困生分析</span></a></li>";
+            }
+            else if ($:userau == 4 ){
+                ch1+="<li><a href=\"/scorestu\"><span>个人数据</span></a></li>";
+				ch1+="<li><a href=\"/prizedeclare\"><span>获奖信息申报</span></a></li>";
+                ch2+="<li><a href=\"/consumptionstu\"><span>个人消费分析</span></a></li>";
+                ch3+="<li><a href=\"/cleanone\"><span>个人宿舍得分</span></a></li>";
+                ch3+="<li><a href=\"/studyone\"><span>个人集体自习</span></a></li>";
+                ch4+="<li><a href=\"/clubpic\"><span>社团签到</span></a></li>";
+                ch4+="<li><a href=\"/clubmanage\"><span>社团管理</span></a></li>";
+            }
+            ch1+="";
+            ch2+="";
+            ch3+="";
+            ch4+="";
+            div1.innerHTML=ch1;
+            div2.innerHTML=ch2;
+            div3.innerHTML=ch3;
+            div4.innerHTML=ch4;
+        }
+		createtable();
+		createchoice();
+	}
+function cop(){
+    var data = [
+        ["高等数学","大学物理","计算机基础","有机化学","大学英语"],
+        ["大学生职业规划","电子商务","新生心理健康"],
+        ["获奖"],
+        ["处分"]
+    ]
+    var sub1 = document.getElementById("sub1");
+    var sub2 = document.getElementById("sub2");
+    var index = sub1.value;
+    var selects;
+    if( index == "必修") selects = data[0];
+    if( index == "选修") selects = data[1];
+    if( index == "获奖") selects = data[2];
+    if( index == "处分") selects = data[3];
+    var oldOption = sub2.children;
+    var length = oldOption.length;
+    for(var i=0;i<length;i++){
+        sub2.removeChild(oldOption[0]);
+    }
+    if(index == "请选择" ) return;
+    for(var i=0;i<selects.length;i++){
+        var option = document.createElement("option");
+        option.innerHTML = selects[i];
+        sub2.appendChild(option);
+    }
+
+}
+</script>
+<div style="width:1500px;">
+    <div class="nav" style="float:left;">
+        <div class="nav-top">
+            <div id="mini" style="border-bottom:1px solid rgba(255,255,255,.1)"><img src="http://sandbox.runjs.cn/uploads/rs/202/4e4ejrix/mini.png" ></div>
+
+        </div>
+        <ul>
+		<li class="nav-item">
+                <a href="/main"><i class="iconfont icon-home"></i><span>首页</span></a>
+            </li>
+		<li class="nav-item">
+                <a href="javascript:;"><i class="iconfont icon-yonghu1"></i><span>$username</span><i class="my-icon nav-more"></i></a>
+                <ul>
+                    <li><a href="/modify"><span>修改密码</span></a></li>
+					<li><a href="/"><span>登出</span></a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;"><i class="iconfont icon-chengji"></i><span>成绩与获奖</span><i class="my-icon nav-more"></i></a>
+
+                <ul id="div1">
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;"><i class="icon iconfont">&#xe61f;</i><span>消费分析</span><i class="my-icon nav-more"></i></a>
+
+                <ul id="div2">
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:;"><i class="iconfont icon-deyutiandi"></i><span>德育分析</span><i class="my-icon nav-more"></i></a>
+
+                <ul id="div3">
+
+                </ul>
+            </li>
+			<li class="nav-item">
+                <a href="javascript:;"><i class="iconfont icon-shetuanhuodong"></i><span>社团活动</span><i class="my-icon nav-more"></i></a>
+
+                <ul id="div4">
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+	<div style="float:left;display:inline;width:900px;height:100%;">
+	<div style="width:600px;margin:20px 300px;">
+			 <center class="font" style="margin:10px auto;background-color:#Edd0BE;">获奖情况</center>
+			  <div class="row clearfix">
+    <form role="form" method="post">
+        <div>
+            <label for="sub1">内容</label>
+            <select class="form-group" name="sub1" id="sub1" onchange="cop();">
+                <option value="">请选择</option>
+                <option value="必修">必修</option>
+                <option value="选修">选修</option>
+                <option value="获奖" selected>获奖</option>
+                <option value="处分">处分</option>
+            </select>
+            <select class="form-group" name="sub2" id="sub2">
+                <option>请选择</option>
+            </select>
+			<button type="submit" class="myButton">查询</button>
+        </div>
+        
+    </form>
+    </div>
+     <div style="height:500px; overflow:scroll;overflow-y:auto;overflow-x:hidden;">
+        <table class="bordered">
+
+            <tbody id="resulttable">
+
+            </tbody>
+        </table>
+    </div>
+		
+	</div>
+	
+</div>
+</body>
+<script>
+
+
+$$(function(){
+
+    $$('.nav-item>a').on('click',function(){
+        if (!$$('.nav').hasClass('nav-mini')) {
+            if ($$(this).next().css('display') == "none") {
+
+                $$('.nav-item').children('ul').slideUp(300);
+                $$(this).next('ul').slideDown(300);
+                $$(this).parent('li').addClass('nav-show').siblings('li').removeClass('nav-show');
+            }else{
+                $$(this).next('ul').slideUp(300);
+                $$('.nav-item.nav-show').removeClass('nav-show');
+            }
+        }
+    });
+
+	$$('#mini').on('click',function(){
+        if (!$$('.nav').hasClass('nav-mini')) {
+            $$('.nav-item.nav-show').removeClass('nav-show');
+            $$('.nav-item').children('ul').removeAttr('style');
+            $$('.nav').addClass('nav-mini');
+        }else{
+            $$('.nav').removeClass('nav-mini');
+        }
+    });
+});
+
+</script>
+</html>

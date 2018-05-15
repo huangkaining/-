@@ -1,0 +1,172 @@
+
+.font{font-family:Microsoft JhengHei,sans-serif;font-size:25px;font-weight:bold;color:black;}
+body,html{height: 100%;background: #E2E2E2;min-height:600px;min-width:1300px; background:url(bg.jpg)}
+body,ul{margin:0;padding:0}
+body{font:14px "微软雅黑","宋体","Arial Narrow",HELVETICA;-webkit-text-size-adjust:100%;}
+li{list-style:none}
+a{text-decoration:none;}
+/* 以上实际使用若已初始化可删除 */
+
+/* nav */
+.nav{width: 220px;height: 100%;background:#E03636;transition: all .3s;}
+.nav a{display: block;overflow: hidden;padding-left: 20px;line-height: 46px;max-height: 46px;color: white;transition: all .3s;}
+.nav a span{margin-left: 30px;}
+.nav-item{position: relative;font-size:18px;}
+.nav-item.nav-show{border-bottom: none;}
+.nav-item ul{display: none;background: rgba(0,0,0,.1);}
+.nav-item.nav-show ul{display: block;}
+.nav-item>a:before{content: "";position: absolute;left: 0px;width: 2px;height: 46px;background: #34A0CE;opacity:0;transition: all .3s;}
+.nav .nav-icon{font-size: 20px;position: absolute;margin-left:-1px;}
+/* 此处修改导航图标 可自定义iconfont 替换*/
+.iconfont{
+    font-family:"iconfont";
+    font-size:27px;
+    font-style:normal;
+}
+/*---------------------*/
+.nav-more{float:right;margin-right: 20px;font-size: 12px;transition: transform .3s;}
+/* 此处为导航右侧箭头 如果自定义iconfont 也需要替换*/
+.nav-more::after{content: "\e621";}
+/*---------------------*/
+.nav-show .nav-more{transform:rotate(90deg);}
+.nav-show,.nav-item>a:hover{color: #FFF;background:rgba(0,0,0,.1);}
+.nav-show>a:before,.nav-item>a:hover:before{opacity:1;}
+.nav-item li:hover a{color: #FFF;background: rgba(0, 0, 0,.1);}
+
+/* nav-mini */
+.nav-mini.nav{width: 60px;}
+.nav-mini.nav .nav-icon{/* margin-left:-2px; */}
+.nav-mini.nav .nav-item>a span{display: none;}
+.nav-mini.nav .nav-more{margin-right: -20px;}
+.nav-mini.nav .nav-item ul{position: absolute;top:0px;left:60px;width: 180px;z-index: 99;background:#3C474C;overflow: hidden;}
+.nav-mini.nav .nav-item:hover{background:rgba(255,255,255,.1);}
+.nav-mini.nav .nav-item:hover .nav-item a{color:#FFF;}
+.nav-mini.nav .nav-item:hover a:before{opacity:1;}
+.nav-mini.nav .nav-item:hover ul{display: block;}
+
+
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;    
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.bordered tr{
+    background: white; 
+}    
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:3px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+	background-color:#f6f6f6;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}

@@ -1,0 +1,78 @@
+$def with(username,userau)
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>学生数据分析平台</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+        window.onload=function createchoice(){
+            var div1=document.getElementById("choice1");
+
+
+            var ch="<div class=\"col-md-6\"><ul class=\"nav nav-pills nav-stacked\">";
+            if ($:userau == 1){
+                ch+="<li><a href=\"/prizedeclare\">获奖信息申报</a></li>";
+                ch+="<li><a href=\"/scorestu\">个人查询</a></li>";
+            }
+            else if ($:userau == 2){
+                ch+="<li><a href=\"/inclass\">班内数据分析</a></li>";
+            }
+            else if ($:userau == 3){
+                ch+="<li><a href=\"/ingrade\">班级数据分析</a></li>";
+
+                ch+="<li><a href=\"/fileimport\">成绩导入</a></li>";
+            }
+            ch+="</u1></div>";
+            div1.innerHTML=ch;
+        }
+    </script>
+<div class="row">
+	<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+         <a class="navbar-brand" href="/main">首页</a>
+ <!--字体图标-->
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+		<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    $username
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/modify">修改密码</a></li>
+		    <li><a href="/">登出</a></li>
+		</ul>
+                </li>
+
+        </ul>
+    </div>
+    </div>
+</nav>
+</div>
+
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+                    <h1>picture1</h1>
+				</div>
+				<div class="col-md-6 column">
+                    <div id="choice1">
+
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
