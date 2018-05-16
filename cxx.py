@@ -13,6 +13,7 @@ from lxml import etree
 import time
 import memcache
 import news
+import re
 
 
 urls = (
@@ -78,22 +79,26 @@ class Index:
         i = web.input()
         userid = i.get('userid')
         password = i.get('password')
-        results = list(db.query("SELECT * FROM user WHERE userid='%s'"%userid))
-        if results:
-            if userid == results[0]['userid'] and password == results[0]['password']:
-                session.logged_in = True
-                session.userid = userid
-                session.username = results[0]['username']
-                session.au = results[0]['role']
-                session.id = userid
-                web.setcookie('system_mangement', '', 60)
-                raise web.seeother('/main')
+        if re.search("^[A-Za-z0-9]+$",userid):
+            results = list(db.query("SELECT * FROM user WHERE userid='%s'"%userid))
+            if results:
+                if userid == results[0]['userid'] and password == results[0]['password']:
+                    session.logged_in = True
+                    session.userid = userid
+                    session.username = results[0]['username']
+                    session.au = results[0]['role']
+                    session.id = userid
+                    web.setcookie('system_mangement', '', 60)
+                    raise web.seeother('/main')
+                else:
+                    status = "用户名或密码错误"
             else:
                 status = "用户名或密码错误"
+            return render.index(status)
         else:
-            status = "用户名或密码错误"
-
-        return render.index(status)
+            status = "用户名不合法"
+            print(1)
+            return render.index(status)
 
 class intr:
     def GET(self):
@@ -106,7 +111,6 @@ class main:
         list1 = list(db.query("SELECT urls,title FROM news WHERE type='school' and date(dtime) = '2018-4-19'"))
         list2 = list(db.query("SELECT urls,title FROM news WHERE type='paper' and date(dtime) = '2018-4-19'"))
 
-        #list1.append({"urls":"www.baidu.com","title":"百度"})
 
         str1 = json.dumps(list1)
         str2 = json.dumps(list2)
@@ -122,7 +126,7 @@ class main:
         list1 = list(db.query("SELECT urls,title FROM news WHERE type='school' and date(dtime) = '2018-4-19'"))
         list2 = list(db.query("SELECT urls,title FROM news WHERE type='paper' and date(dtime) = '2018-4-19'"))
 
-        #list1.append({"urls": "www.baidu.com", "title": "百度"})
+
 
         str1 = json.dumps(list1)
         str2 = json.dumps(list2)
@@ -199,10 +203,17 @@ class PrizeDeclare:
         pname = x.get('prizename')
         ptime = x.get('prizetime')
         plevel = x.get('prizelevel')
-        db.insert('prize',userid = pid,userclass = pclass, prize_name = pname, prize_time = ptime, prize_level = plevel)
-        username = session.username
-        au = session.au
-        return render.prizedeclare(username, au,'上传成功')
+        if re.search("[^\u4e00-\u9fa5a-zA-Z0-9]",pid) or re.search("[^\u4e00-\u9fa5a-zA-Z0-9]",pclass) or re.search("[^\u4e00-\u9fa5a-zA-Z0-9]",pname)  or re.search("[^\u4e00-\u9fa5a-zA-Z0-9]",plevel):
+            username = session.username
+            au = session.au
+            print(1)
+            return render.prizedeclare(username,au,"内容不合法")
+        else:
+            db.insert('prize',userid = pid,userclass = pclass, prize_name = pname, prize_time = ptime, prize_level = plevel)
+            username = session.username
+            au = session.au
+            print(2)
+            return render.prizedeclare(username, au,"上传成功")
 
 class InClass:
     def GET(self):
@@ -248,57 +259,7 @@ class InClass:
             datastr2 = json.dumps(result2)
             return render.scorestu2(session.username, session.au, datastr1, datastr2)
 
-'''class InClass:
-    def GET(self):
-        if session.logged_in == False:
-            raise web.seeother('/')
-        username = session.username
-        au = session.au
-        return render.inclass(username,au,'','')
-    def POST(self):
-        import sys
-        reload(sys)
-        sys.setdefaultencoding('utf8')
-        i = web.input()
-        sub = i.get("sub1")
-        sub2 = i.get("sub2")
-        classresult = list(db.query("SELECT userclass FROM user WHERE userid='%s'" %session.userid))
-        idresult = list(db.query("SELECT userid FROM user WHERE userclass='%s'" %classresult[0]['userclass']))
-        result1 = []
-        username = session.username
-        au = session.au
-        if sub == u"必修" :
-            for p in idresult :
-                re = list(db.query("SELECT userid,subject,subject_score FROM score WHERE userid='%s' and subject_type='必修'" %p['userid']))
-                result1.extend(re)
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1':'学号'},{'n2':'科目'},{'n3':'成绩'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu01(session.username,session.au,datastr1,datastr2)
-        if sub == u"选修" :
-            for p in idresult :
-                re = list(db.query("SELECT userid,subject,subject_score FROM score WHERE userid='%s' and subject_type='选修'" %p['userid']))
-                result1.extend(re)
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1': '学号'}, {'n2': '科目'}, {'n3': '成绩'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu02(session.username,session.au,datastr1,datastr2)
-        if sub == u"获奖":
-            for p in idresult :
-                re = list(db.query("SELECT userid,prize_name,prize_level FROM prize WHERE userid='%s'" %p['userid']))
-                result1.extend(re)
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1': '学号'}, {'n2': '奖项名称'}, {'n3': '奖项等级'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu1(session.username, session.au, datastr1, datastr2)
-        if sub == u"处分":
-            for p in idresult :
-                re = list(db.query("SELECT userid,punish_level FROM punishment WHERE userid='%s'" %p['userid']))
-                result1.extend(re)
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1': '学号'}, {'n2': '处分类型'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu2(session.username, session.au, datastr1, datastr2)'''
+
 
 class InGrade:
     def GET(self):
@@ -420,51 +381,6 @@ class ScoreStu:
             datastr2 = json.dumps(result2)
             return render.scorestu2(session.username, session.au, datastr1, datastr2)
 
-'''class ScoreStu:
-    def GET(self):
-        if session.logged_in == False:
-            raise web.seeother('/')
-        username = session.username
-        au = session.au
-        result1=[{'n1': '无'}]
-        datastr1 = json.dumps(result1)
-        result2=[{'n1': '结果'}]
-        datastr2 = json.dumps(result2)
-        return render.scorestu(username,au,datastr1,datastr2)
-    def POST(self):
-        import sys
-        reload(sys)
-        sys.setdefaultencoding('utf8')
-        i = web.input()
-        sub = i.get("sub1")
-        userid = session.userid
-        username = session.username
-        au = session.au
-        if sub == u"必修":
-            result1 = list(db.query("SELECT subject,userid,subject_score FROM score WHERE userid='%s' and subject_type='必修' " % userid))
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1': '学号'}, {'n2': '科目'}, {'n3': '成绩'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu01(session.username, session.au, datastr1, datastr2)
-        if sub == u"选修":
-            sql1="SELECT userid,subject,subject_score FROM score WHERE userid='%s' and subject_type='选修'" % userid
-            result1 = list(db.query(sql1))
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1': '学号'}, {'n2': '科目'}, {'n3': '成绩'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu02(session.username, session.au, datastr1, datastr2)
-        if sub == u"获奖":
-            result1 = list(db.query("SELECT userid,prize_name,prize_level FROM prize WHERE userid='%s'" % userid))
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1': '学号'}, {'n2': '奖项名称'}, {'n3': '奖项等级'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu1(session.username, session.au, datastr1, datastr2)
-        if sub == u"处分":
-            result1 = list(db.query("SELECT userid,punish_level FROM punishment WHERE userid='%s'" % userid))
-            datastr1 = json.dumps(result1)
-            result2 = [{'n1': '学号'}, {'n2': '处分类型'}]
-            datastr2 = json.dumps(result2)
-            return render.scorestu2(session.username, session.au, datastr1, datastr2)'''
 
 
 class FileImport:
